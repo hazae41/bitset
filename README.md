@@ -25,4 +25,8 @@ const result = bitset
   .toggleBE(1) // 0100 0010
   .unsign() // >>> 0
   .value
+
+const last6 = bitset
+  .last(6) // 00 0010
+  .toString() // "000010"
 ```

@@ -70,13 +70,13 @@ test("Export Int32 to Uint32", async () => {
 test("First", async () => {
   const bitset = new Bitset(0b11100011, 8)
 
-  assert(bitset.first(2) === 3)
-  assert(bitset.first(3) === 7)
+  assert(bitset.first(2).value === 3)
+  assert(bitset.first(3).value === 7)
 })
 
 test("Last", async () => {
   const bitset = new Bitset(0b11100111, 8)
 
-  assert(bitset.last(2) === 3)
-  assert(bitset.last(3) === 7)
+  assert(bitset.last(2).value === 3)
+  assert(bitset.last(3).value === 7)
 })

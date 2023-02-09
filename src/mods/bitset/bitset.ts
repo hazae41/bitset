@@ -8,7 +8,7 @@ export class Bitset {
   /**
    * Get the value as a left-padded binary string
    * 
-   * @returns 
+   * @returns string
    */
   toString() {
     return this.value.toString(2).padStart(this.length, "0")
@@ -17,7 +17,7 @@ export class Bitset {
   /**
    * Transform the value to an unsigned 32-bits number
    * 
-   * @returns 
+   * @returns the same Bitset
    */
   unsign() {
     this.value = this.value >>> 0
@@ -28,7 +28,7 @@ export class Bitset {
   /**
    * Bitwise NOT
    * 
-   * @returns 
+   * @returns the same Bitset
    */
   not() {
     for (let i = 0; i < this.length; i++)
@@ -40,18 +40,17 @@ export class Bitset {
    * Get the bit at big-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns boolean
    */
   getBE(index: number) {
     return Boolean(this.value & (1 << (this.length - index - 1)))
   }
 
-
   /**
    * Get the bit at little-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns boolean
    */
   getLE(index: number) {
     return Boolean(this.value & (1 << index))
@@ -61,7 +60,7 @@ export class Bitset {
    * Toggle the bit at big-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns the same Bitset
    */
   toggleBE(index: number) {
     this.value ^= (1 << (this.length - index - 1))
@@ -73,7 +72,7 @@ export class Bitset {
    * Toggle the bit at little-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns the same Bitset
    */
   toggleLE(index: number) {
     this.value ^= (1 << index)
@@ -85,7 +84,7 @@ export class Bitset {
    * Enable the bit at big-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns the same Bitset
    */
   enableBE(index: number) {
     this.value |= (1 << (this.length - index - 1))
@@ -97,7 +96,7 @@ export class Bitset {
    * Enable the bit at little-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns the same Bitset
    */
   enableLE(index: number) {
     this.value |= (1 << index)
@@ -109,7 +108,7 @@ export class Bitset {
    * Disable the bit at big-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns the same Bitset
    */
   disableBE(index: number) {
     this.value &= ~(1 << (this.length - index - 1))
@@ -121,7 +120,7 @@ export class Bitset {
    * Disable the bit at little-endian index
    * 
    * @param index 
-   * @returns 
+   * @returns the same Bitset
    */
   disableLE(index: number) {
     this.value &= ~(1 << index)
@@ -134,7 +133,7 @@ export class Bitset {
    * 
    * @param index 
    * @param value 
-   * @returns 
+   * @returns the same Bitset
    */
   setBE(index: number, value: boolean) {
     if (value)
@@ -148,7 +147,7 @@ export class Bitset {
    * 
    * @param index 
    * @param value 
-   * @returns 
+   * @returns the same Bitset
    */
   setLE(index: number, value: boolean) {
     if (value)
@@ -161,19 +160,23 @@ export class Bitset {
    * Get first count bits
    * 
    * @param count number of bits to get
-   * @returns 
+   * @returns a new Bitset
    */
   first(count: number) {
-    return this.value >> (this.length - count)
+    const value = this.value >> (this.length - count)
+
+    return new Bitset(value, count)
   }
 
   /**
    * Get last count bits
    * 
    * @param count number of bits to get
-   * @returns 
+   * @returns a new Bitset
    */
   last(count: number) {
-    return this.value & ((1 << count) - 1)
+    const value = this.value & ((1 << count) - 1)
+
+    return new Bitset(value, count)
   }
 }

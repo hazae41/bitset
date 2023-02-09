@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/bitset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utilities for arithmetic bitwise operations in JavaScript",
   "homepage": "https://github.com/hazae41/bitset",
   "repository": "github:hazae41/bitset",

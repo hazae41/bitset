@@ -20,7 +20,7 @@ export class Bitset {
    * @returns the same Bitset
    */
   unsign() {
-    this.value = this.value >>> 0
+    this.value >>>= 0
 
     return this
   }

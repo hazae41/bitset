@@ -1,5 +1,7 @@
 # Bitset
 
+DEPRECATED
+
 Utilities for arithmetic bitwise operations in JavaScript
 
 ```bash
